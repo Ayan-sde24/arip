@@ -50,6 +50,13 @@ Open the health endpoint:
 curl http://localhost:8000/health
 ```
 
+Upload a resume document:
+
+```bash
+curl -X POST http://localhost:8000/api/v1/upload/resume \
+  -F "file=@resume.pdf;type=application/pdf"
+```
+
 ## Docker
 
 Create a local environment file before starting the stack:
@@ -109,3 +116,29 @@ uv run pytest
   "environment": "development"
 }
 ```
+
+## Expected Upload Response
+
+```json
+{
+  "file_id": "9d69d74d-0000-4000-8000-000000000000",
+  "filename": "resume.pdf",
+  "size": 1024,
+  "checksum": "sha256-hex-value",
+  "status": "uploaded"
+}
+```
+
+The API never returns filesystem paths. Uploaded files are stored with UUID filenames under the configured upload directories.
+
+## Storage Configuration
+
+Storage settings are loaded from environment variables:
+
+- `RESUME_UPLOAD_DIR`
+- `JOB_UPLOAD_DIR`
+- `MAX_UPLOAD_SIZE_BYTES`
+- `ALLOWED_UPLOAD_EXTENSIONS`
+- `ALLOWED_UPLOAD_MIME_TYPES`
+
+The default accepted document types are PDF and DOCX.

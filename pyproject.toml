@@ -3,7 +3,7 @@ name = "arip-backend"
 version = "0.1.0"
 description = "Enterprise AI Resume Intelligence Platform backend foundation."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.14"
 authors = [
     { name = "ARIP Engineering" }
 ]
@@ -51,7 +51,9 @@ src = ["backend", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "N", "S", "ANN"]
-ignore = ["ANN101", "ANN102"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
 
 [tool.mypy]
 python_version = "3.12"

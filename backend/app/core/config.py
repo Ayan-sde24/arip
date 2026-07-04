@@ -29,7 +29,9 @@ class Settings(BaseSettings):
     database_user: str = Field(default="arip")
     database_password: str = Field(default="arip_password")
     database_url: PostgresDsn = Field(
-        default="postgresql+psycopg://arip:arip_password@localhost:5432/arip"
+        default=PostgresDsn(
+            "postgresql+psycopg://arip:arip_password@localhost:5432/arip"
+        )
     )
 
     jwt_secret_key: str = Field(default="replace-with-a-secure-random-secret")
@@ -48,10 +50,16 @@ class Settings(BaseSettings):
     job_upload_dir: Path = Field(default=Path("storage/uploads/jobs"))
     report_output_dir: Path = Field(default=Path("storage/generated/reports"))
     generated_resume_dir: Path = Field(default=Path("storage/generated/resumes"))
-
-    embedding_model_name: str = Field(
-        default="sentence-transformers/all-MiniLM-L6-v2"
+    max_upload_size_bytes: int = Field(default=10 * 1024 * 1024)
+    allowed_upload_extensions: tuple[str, ...] = Field(default=("pdf", "docx"))
+    allowed_upload_mime_types: tuple[str, ...] = Field(
+        default=(
+            "application/pdf",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        )
     )
+
+    embedding_model_name: str = Field(default="sentence-transformers/all-MiniLM-L6-v2")
     openai_api_key: str = Field(default="replace-with-openai-api-key")
 
 

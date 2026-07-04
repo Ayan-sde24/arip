@@ -2,11 +2,24 @@
 
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Protocol, cast
 
 from loguru import logger
 
 from app.core.config import Settings
+
+
+class AppLogger(Protocol):
+    """Typed subset of Loguru methods used by the application."""
+
+    def info(self, message: str, *args: object, **kwargs: object) -> None:
+        """Log an informational message."""
+
+    def warning(self, message: str, *args: object, **kwargs: object) -> None:
+        """Log a warning message."""
+
+    def exception(self, message: str, *args: object, **kwargs: object) -> None:
+        """Log an exception message."""
 
 
 def configure_logging(settings: Settings) -> None:
@@ -44,6 +57,6 @@ def configure_logging(settings: Settings) -> None:
     )
 
 
-def get_logger(name: str) -> Any:
+def get_logger(name: str) -> AppLogger:
     """Return a Loguru logger bound to a module name."""
-    return logger.bind(name=name)
+    return cast(AppLogger, logger.bind(name=name))
