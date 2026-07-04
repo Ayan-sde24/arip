@@ -8,10 +8,20 @@ venv/
 
 logs/
 *.log
+!logs/
+!logs/.gitkeep
 
 storage/uploads/
 storage/generated/
 generated/
+!storage/
+!storage/uploads/
+!storage/uploads/resumes/
+!storage/uploads/jobs/
+!storage/generated/
+!storage/generated/reports/
+!storage/generated/resumes/
+!storage/**/.gitkeep
 
 .pytest_cache/
 .mypy_cache/
