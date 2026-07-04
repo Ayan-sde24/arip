@@ -1,0 +1,65 @@
+[project]
+name = "arip-backend"
+version = "0.1.0"
+description = "Enterprise AI Resume Intelligence Platform backend foundation."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    { name = "ARIP Engineering" }
+]
+dependencies = [
+    "alembic>=1.13.2",
+    "fastapi>=0.115.0",
+    "loguru>=0.7.2",
+    "passlib[bcrypt]>=1.7.4",
+    "psycopg[binary]>=3.2.1",
+    "pydantic>=2.8.2",
+    "pydantic-settings>=2.4.0",
+    "pymupdf>=1.24.9",
+    "python-docx>=1.1.2",
+    "python-jose[cryptography]>=3.3.0",
+    "python-multipart>=0.0.9",
+    "sentence-transformers>=3.0.1",
+    "spacy>=3.7.5",
+    "sqlalchemy>=2.0.32",
+    "uvicorn[standard]>=0.30.6",
+]
+
+[build-system]
+requires = ["setuptools>=72.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["backend"]
+
+[dependency-groups]
+dev = [
+    "black>=24.8.0",
+    "mypy>=1.11.1",
+    "pytest>=8.3.2",
+    "ruff>=0.6.2",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["backend", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "S", "ANN"]
+ignore = ["ANN101", "ANN102"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["app"]
+mypy_path = "backend"
+
+[tool.pytest.ini_options]
+pythonpath = ["backend"]
+testpaths = ["tests"]
+addopts = "-ra"
