@@ -15,6 +15,17 @@
 │       │   ├── config.py
 │       │   ├── constants.py
 │       │   └── logger.py
+│       ├── domain/
+│       │   └── entities/
+│       │       ├── __init__.py
+│       │       ├── agent_result.py
+│       │       ├── analysis_context.py
+│       │       ├── candidate.py
+│       │       ├── document.py
+│       │       ├── evidence.py
+│       │       ├── job_description.py
+│       │       ├── recommendation.py
+│       │       └── resume.py
 │       ├── infrastructure/
 │       │   └── storage/
 │       │       ├── exceptions.py
@@ -25,6 +36,7 @@
 │       │       └── validator.py
 │       └── main.py
 ├── tests/
+│   ├── test_domain_entities.py
 │   └── test_storage_service.py
 ├── storage/
 │   ├── generated/

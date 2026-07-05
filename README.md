@@ -1,8 +1,8 @@
 # ARIP Backend
 
-ARIP is an enterprise AI Resume Intelligence Platform. This repository currently contains the initial backend foundation only: FastAPI application wiring, configuration, logging, project structure, containerization, and storage directories.
+ARIP is an enterprise AI Resume Intelligence Platform. This repository contains the backend foundation: FastAPI application wiring, configuration, logging, project structure, containerization, storage directories, and the universal document domain model layer.
 
-No AI logic, resume parsing, authentication, or database models are implemented in this foundation.
+No AI logic, resume parsing, authentication, or database persistence models are implemented yet.
 
 ## Requirements
 
