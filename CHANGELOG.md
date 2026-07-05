@@ -1,6 +1,20 @@
 # Changelog
 
+## 0.4.0 - Document Intelligence Pipeline
+
+- Implemented three-stage `DocumentIntelligencePipeline` in `backend/app/infrastructure/parser/`.
+- **Stage 1 — Read**: `PdfReader` (PyMuPDF) extracts pages, text blocks, and bounding boxes. `DocxReader` (python-docx) extracts paragraphs with page-break-aware splitting.
+- **Stage 2 — Layout Analysis**: `LayoutAnalyzer` converts raw reader output into immutable `Page` and `TextBlock` domain objects with globally monotonic `reading_order` indices.
+- **Stage 3 — Build**: `DocumentContentBuilder` assembles the final `DocumentContent` domain object with raw text, cleaned text, metadata, language placeholder, and computed statistics.
+- Added three new domain entities: `DocumentContent`, `Page`, `TextBlock`.
+- Added custom exception hierarchy: `ParserError`, `UnreadablePDFError`, `CorruptedDocxError`, `EmptyDocumentError`, `UnsupportedEncodingError`, `ReaderFailureError`.
+- Added `DocumentReader` Protocol interface for future extensibility (OCR, HTML, Markdown, LinkedIn export).
+- Added shared utilities: `clean_text()`, `compute_statistics()`, `detect_language()` (placeholder).
+- Added 32 unit tests covering domain entities, readers, layout analysis, and end-to-end pipeline runs.
+- Pipeline has no AI, NLP, or embedding dependencies.
+
 ## 0.3.0 - Universal Document Domain Model
+
 
 - Established the core Domain Layer for the platform (`backend/app/domain/entities`).
 - Implemented immutable `Document` and `Candidate` domain entities using Python standard library `dataclasses`.
