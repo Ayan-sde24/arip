@@ -2,6 +2,7 @@
 
 from app.domain.entities.agent_result import AgentResult
 from app.domain.entities.analysis_context import AnalysisContext
+from app.domain.entities.ats_report import ATSReport
 from app.domain.entities.candidate import Candidate
 from app.domain.entities.canonical_intermediate_representation import (
     CanonicalIntermediateRepresentation,
@@ -29,6 +30,7 @@ __all__ = [
     "Achievement",
     "AgentResult",
     "AnalysisContext",
+    "ATSReport",
     "Candidate",
     "Certification",
     "Document",
