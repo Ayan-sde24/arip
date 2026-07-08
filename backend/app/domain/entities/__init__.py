@@ -23,6 +23,10 @@ from app.domain.entities.resume import (
     Project,
     Resume,
 )
+from app.domain.entities.resume_optimization_report import (
+    OptimizedResume,
+    ResumeOptimizationReport,
+)
 from app.domain.entities.section_type import SectionType
 from app.domain.entities.structured_document import StructuredDocument
 from app.domain.entities.text_block import TextBlock
@@ -33,6 +37,8 @@ __all__ = [
     "AnalysisContext",
     "ATSReport",
     "RecruiterReport",
+    "OptimizedResume",
+    "ResumeOptimizationReport",
     "Candidate",
     "Certification",
     "Document",
