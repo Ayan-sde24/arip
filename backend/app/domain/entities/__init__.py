@@ -14,6 +14,7 @@ from app.domain.entities.evidence import Evidence
 from app.domain.entities.job_description import JobDescription
 from app.domain.entities.page import Page
 from app.domain.entities.recommendation import Recommendation
+from app.domain.entities.recruiter_report import RecruiterReport
 from app.domain.entities.resume import (
     Achievement,
     Certification,
@@ -31,6 +32,7 @@ __all__ = [
     "AgentResult",
     "AnalysisContext",
     "ATSReport",
+    "RecruiterReport",
     "Candidate",
     "Certification",
     "Document",
