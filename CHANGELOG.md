@@ -1,6 +1,14 @@
 # Changelog
 
+## 0.6.0 - Heading Detection Engine
+
+- Implemented `HeadingCandidate` model representing heading blocks found in documents.
+- Implemented `HeadingRule` base class and concrete scoring rule engines (`LengthRule`, `CapitalizationRule`, `WhitespaceRule`, `KeywordRule`, `PositionRule`).
+- Implemented `HeadingDetector` service mapping over document pages to evaluate, combine, and score block heuristics to return identified heading candidates.
+- Added unit tests for standard keyword headings, unknown headings (heuristic-based), lowercase headings, repeated headings, empty document handling, and filtering false positives.
+
 ## 0.5.0 - Section Type Domain Model
+
 
 - Implemented `SectionType` StrEnum defining categories of document sections (`SUMMARY`, `PROFILE`, `OBJECTIVE`, `EDUCATION`, `EXPERIENCE`, `PROJECTS`, `SKILLS`, `CERTIFICATIONS`, `ACHIEVEMENTS`, `PUBLICATIONS`, `LANGUAGES`, `CONTACT`, `INTERESTS`, `VOLUNTEER`, `AWARDS`, `OTHER`, `UNKNOWN`).
 - Implemented immutable `DocumentSection` domain entity wrapping section data (id, type, title, content, page/block ranges, confidence, and metadata).

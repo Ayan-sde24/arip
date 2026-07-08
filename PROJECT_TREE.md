@@ -9,6 +9,10 @@
 │       │       ├── health.py
 │       │       └── upload.py
 │       ├── application/
+│       │   ├── document_analysis/            # [TICKET-005.2] Heading & section analysis
+│       │   │   ├── heading_candidate.py      # Heading candidate model
+│       │   │   ├── heading_detector.py       # Heading detection service orchestrator
+│       │   │   └── heading_rules.py          # Scoring heuristics engine
 │       │   └── services/
 │       │       └── document_storage.py
 │       ├── core/
@@ -55,6 +59,7 @@
 ├── tests/
 │   ├── test_document_entities.py
 │   ├── test_document_intelligence.py         # [TASK-004] 32 pipeline tests
+│   ├── test_heading_detection.py             # [TICKET-005.2] Heading detection tests
 │   └── test_storage_service.py
 ├── storage/
 │   ├── generated/
