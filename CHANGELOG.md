@@ -1,6 +1,14 @@
 # Changelog
 
+## 1.0.0 - Document Intelligence Pipeline Integration
+
+- Implemented `DocumentPipeline` orchestrating service coordinating layout extraction, heading scoring, section boundary mapping, and CIR construction.
+- Implemented `PipelineResult` dataclass to wrap execution state, warnings, errors, processing durations, and the successfully built CIR object.
+- Implemented `PipelineValidator` checking internal results across stages and generating diagnostic warnings.
+- Added comprehensive integration tests covering end-to-end processing of valid PDF/DOCX resumes, empty documents, heading-less text, duplicate headings, and unknown section types.
+
 ## 0.9.0 - Canonical Intermediate Representation (CIR) Builder
+
 
 - Implemented `CanonicalIntermediateRepresentation` domain entity representing the unified CIR containing source document, content, sections, statistics, and metadata.
 - Implemented `CIRStatistics` application model representing calculated metrics across sections, blocks, pages, character count, word count, and detected languages.

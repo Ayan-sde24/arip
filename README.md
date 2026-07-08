@@ -142,3 +142,44 @@ Storage settings are loaded from environment variables:
 - `ALLOWED_UPLOAD_MIME_TYPES`
 
 The default accepted document types are PDF and DOCX.
+
+## Document Intelligence Subsystem
+
+The Document Intelligence subsystem parses uploaded documents and converts them into a unified structural representation called the **Canonical Intermediate Representation (CIR)**.
+
+### Pipeline Architecture
+
+```text
+Input Document (PDF/DOCX bytes)
+  │
+  ▼
+1. Document Reader (PdfReader / DocxReader)
+  │  (Layout Extraction & Page Splitting)
+  ▼
+DocumentContent (Unified Raw Text & TextBlocks)
+  │
+  ▼
+2. Heading Detection (Heuristic Rules: Length, Caps, Standalone, Keywords)
+  │  (Finds HeadingCandidate objects)
+  ▼
+3. Boundary Detection (Rules: NextHeading, EndOfDocument, PageBreak, Spacing)
+  │  (Finds SectionBoundary coordinate segments)
+  ▼
+4. Section Detection & Classification (SectionMapper)
+  │  (Determines SectionType and builds DocumentSections)
+  ▼
+5. CIR Builder (Validation & Statistics generation)
+  │
+  ▼
+CanonicalIntermediateRepresentation (Immutable CIR)
+```
+
+### Components
+
+- **DocumentReader**: Normalizes PDF layouts (using PyMuPDF dict coordinates) and DOCX files (python-docx paragraph streams) into `DocumentContent`.
+- **HeadingDetector**: Scores candidate headings using heuristic criteria (length, casing, missing sentence punctuation, keyword dictionary matches, and positioning).
+- **BoundaryDetector**: Maps headings to their respective physical bounds sequentially across pages and block ranges.
+- **SectionDetectorService / SectionMapper**: Normalizes headings and maps them to standard categorized domain section types (e.g. `SectionType.EDUCATION`, `SectionType.EXPERIENCE`, `SectionType.SKILLS`, or `SectionType.OTHER` as fallback).
+- **CIRBuilder**: Assembles, validates, calculates file statistics (characters, words, page count, average section size), and outputs the immutable CIR.
+- **DocumentPipeline**: Coordinates all processing stages end-to-end, validating intermediate states, recording telemetry (durations), compiling pipeline warnings, and returning structured `PipelineResult` payloads.
+
