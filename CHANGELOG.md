@@ -1,6 +1,15 @@
 # Changelog
 
+## 0.5.0 - Section Type Domain Model
+
+- Implemented `SectionType` StrEnum defining categories of document sections (`SUMMARY`, `PROFILE`, `OBJECTIVE`, `EDUCATION`, `EXPERIENCE`, `PROJECTS`, `SKILLS`, `CERTIFICATIONS`, `ACHIEVEMENTS`, `PUBLICATIONS`, `LANGUAGES`, `CONTACT`, `INTERESTS`, `VOLUNTEER`, `AWARDS`, `OTHER`, `UNKNOWN`).
+- Implemented immutable `DocumentSection` domain entity wrapping section data (id, type, title, content, page/block ranges, confidence, and metadata).
+- Implemented immutable `StructuredDocument` domain entity containing the source document and list of sections, including section lookup methods (`get_section`, `find_sections`, `has_section`).
+- Integrated and exported the new domain models in the domain layer.
+- Added unit tests covering the section domain models and lookup methods.
+
 ## 0.4.0 - Document Intelligence Pipeline
+
 
 - Implemented three-stage `DocumentIntelligencePipeline` in `backend/app/infrastructure/parser/`.
 - **Stage 1 — Read**: `PdfReader` (PyMuPDF) extracts pages, text blocks, and bounding boxes. `DocxReader` (python-docx) extracts paragraphs with page-break-aware splitting.

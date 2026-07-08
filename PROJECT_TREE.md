@@ -23,11 +23,14 @@
 │       │       ├── candidate.py
 │       │       ├── document.py
 │       │       ├── document_content.py       # [TASK-004] Unified document representation
+│       │       ├── document_section.py       # [TICKET-005.1] Document section domain entity
 │       │       ├── evidence.py
 │       │       ├── job_description.py
 │       │       ├── page.py                   # [TASK-004] Structured page entity
 │       │       ├── recommendation.py
 │       │       ├── resume.py
+│       │       ├── section_type.py           # [TICKET-005.1] Section type StrEnum
+│       │       ├── structured_document.py    # [TICKET-005.1] Structured document domain entity
 │       │       └── text_block.py             # [TASK-004] Text block with reading order
 │       ├── infrastructure/
 │       │   ├── parser/                       # [TASK-004] Document Intelligence Pipeline

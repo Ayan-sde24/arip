@@ -5,6 +5,7 @@ from app.domain.entities.analysis_context import AnalysisContext
 from app.domain.entities.candidate import Candidate
 from app.domain.entities.document import Document, DocumentStatus, DocumentType
 from app.domain.entities.document_content import DocumentContent
+from app.domain.entities.document_section import DocumentSection
 from app.domain.entities.evidence import Evidence
 from app.domain.entities.job_description import JobDescription
 from app.domain.entities.page import Page
@@ -17,6 +18,8 @@ from app.domain.entities.resume import (
     Project,
     Resume,
 )
+from app.domain.entities.section_type import SectionType
+from app.domain.entities.structured_document import StructuredDocument
 from app.domain.entities.text_block import TextBlock
 
 __all__ = [
@@ -38,4 +41,7 @@ __all__ = [
     "Recommendation",
     "Resume",
     "TextBlock",
+    "SectionType",
+    "DocumentSection",
+    "StructuredDocument",
 ]

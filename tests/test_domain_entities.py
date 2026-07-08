@@ -13,6 +13,7 @@ from app.domain.entities import (
     Candidate,
     Certification,
     Document,
+    DocumentSection,
     DocumentStatus,
     DocumentType,
     Education,
@@ -22,6 +23,8 @@ from app.domain.entities import (
     Project,
     Recommendation,
     Resume,
+    SectionType,
+    StructuredDocument,
 )
 
 
@@ -378,3 +381,129 @@ def test_analysis_context_creation() -> None:
     assert context.settings == {"threshold": 0.75}
     assert context.previous_agent_results == [result]
     assert context.execution_metadata == {"pipeline_id": "test-pipeline-123"}
+
+
+def test_section_type_enum() -> None:
+    """Test standard values and StrEnum properties of SectionType."""
+    assert SectionType.SUMMARY == "summary"
+    assert SectionType.EDUCATION == "education"
+    assert SectionType.EXPERIENCE == "experience"
+    assert SectionType.UNKNOWN == "unknown"
+
+
+def test_document_section_creation_and_immutability() -> None:
+    """Test standard instantiation and immutability of the DocumentSection entity."""
+    section_id = uuid4()
+    section = DocumentSection(
+        id=section_id,
+        section_type=SectionType.EXPERIENCE,
+        title="Work Experience",
+        content="Senior Software Engineer...",
+        page_number=1,
+        start_block=2,
+        end_block=15,
+        confidence=0.95,
+        metadata={"keyword_match": True},
+    )
+
+    assert section.id == section_id
+    assert section.section_type == SectionType.EXPERIENCE
+    assert section.title == "Work Experience"
+    assert section.content == "Senior Software Engineer..."
+    assert section.page_number == 1
+    assert section.start_block == 2
+    assert section.end_block == 15
+    assert section.confidence == 0.95
+    assert section.metadata == {"keyword_match": True}
+
+    with pytest.raises(FrozenInstanceError):
+        section.confidence = 1.0  # type: ignore[misc]
+
+
+def test_structured_document_creation_and_lookup() -> None:
+    """Test StructuredDocument sections retrieval, metadata, and statistics."""
+    doc_id = uuid4()
+    now = datetime.now(UTC)
+    doc = Document(
+        document_id=doc_id,
+        document_type=DocumentType.RESUME,
+        original_filename="cv.pdf",
+        stored_filename=f"{doc_id}.pdf",
+        mime_type="application/pdf",
+        extension="pdf",
+        checksum="abcd12345",
+        size=1024,
+        created_at=now,
+        updated_at=now,
+        status=DocumentStatus.UPLOADED,
+    )
+
+    section_exp = DocumentSection(
+        id=uuid4(),
+        section_type=SectionType.EXPERIENCE,
+        title="Experience",
+        content="Software engineer at company A",
+        page_number=1,
+        start_block=0,
+        end_block=5,
+        confidence=0.9,
+    )
+
+    section_edu = DocumentSection(
+        id=uuid4(),
+        section_type=SectionType.EDUCATION,
+        title="Education",
+        content="B.Sc in Computer Science",
+        page_number=2,
+        start_block=6,
+        end_block=10,
+        confidence=0.95,
+    )
+
+    struct_doc = StructuredDocument(
+        document=doc,
+        sections=[section_exp, section_edu],
+        statistics={"total_sections": 2},
+        metadata={"processed_by": "heuristic_analyzer"},
+    )
+
+    # Test attributes
+    assert struct_doc.document == doc
+    assert len(struct_doc.sections) == 2
+    assert struct_doc.statistics == {"total_sections": 2}
+    assert struct_doc.metadata == {"processed_by": "heuristic_analyzer"}
+
+    # Test Section lookup methods
+    assert struct_doc.has_section(SectionType.EXPERIENCE) is True
+    assert struct_doc.has_section(SectionType.SKILLS) is False
+
+    assert struct_doc.get_section(SectionType.EXPERIENCE) == section_exp
+    assert struct_doc.get_section(SectionType.SKILLS) is None
+
+    assert struct_doc.find_sections(SectionType.EXPERIENCE) == [section_exp]
+    assert struct_doc.find_sections(SectionType.SKILLS) == []
+
+
+def test_structured_document_empty() -> None:
+    """Test StructuredDocument with no sections handles lookup gracefully."""
+    doc_id = uuid4()
+    now = datetime.now(UTC)
+    doc = Document(
+        document_id=doc_id,
+        document_type=DocumentType.RESUME,
+        original_filename="cv.pdf",
+        stored_filename=f"{doc_id}.pdf",
+        mime_type="application/pdf",
+        extension="pdf",
+        checksum="abcd12345",
+        size=1024,
+        created_at=now,
+        updated_at=now,
+        status=DocumentStatus.UPLOADED,
+    )
+
+    struct_doc = StructuredDocument(document=doc)
+    assert len(struct_doc.sections) == 0
+    assert struct_doc.has_section(SectionType.EXPERIENCE) is False
+    assert struct_doc.get_section(SectionType.EXPERIENCE) is None
+    assert struct_doc.find_sections(SectionType.EXPERIENCE) == []
