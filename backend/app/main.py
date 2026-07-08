@@ -5,6 +5,10 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from app.api.routers.analysis import router as analysis_router
+from app.api.routers.job import router as job_router
+from app.api.routers.report import router as report_router
+from app.api.routers.resume import router as resume_router
 from app.api.v1.health import router as health_router
 from app.api.v1.upload import router as upload_router
 from app.core.config import get_settings
@@ -39,6 +43,13 @@ def create_app() -> FastAPI:
     application.include_router(health_router)
     application.include_router(health_router, prefix=settings.api_v1_prefix)
     application.include_router(upload_router, prefix=settings.api_v1_prefix)
+
+    # Expose new REST API routers under prefix/root as appropriate
+    application.include_router(resume_router, prefix="/api")
+    application.include_router(job_router, prefix="/api")
+    application.include_router(analysis_router)
+    application.include_router(report_router, prefix="/api")
+
     return application
 
 

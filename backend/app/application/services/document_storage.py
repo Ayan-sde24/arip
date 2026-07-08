@@ -21,3 +21,12 @@ class DocumentStorageApplicationService:
             mime_type=file.content_type or "",
             content=content,
         )
+
+    async def store_job_description(self, *, file: UploadFile) -> FileMetadata:
+        """Read an uploaded job description and delegate storage."""
+        content = await file.read()
+        return self._storage_service.store_job_description(
+            original_filename=file.filename or "",
+            mime_type=file.content_type or "",
+            content=content,
+        )
