@@ -30,7 +30,10 @@
 │       │   │   ├── candidate_validator.py    # [TICKET-006.1] Candidate fields validator
 │       │   │   ├── education_builder.py      # [TICKET-006.2] Education domain entity builder
 │       │   │   ├── education_mapper.py       # [TICKET-006.2] Education parser/mapper
-│       │   │   └── education_validator.py    # [TICKET-006.2] Education fields validator
+│       │   │   ├── education_validator.py    # [TICKET-006.2] Education fields validator
+│       │   │   ├── experience_builder.py     # [TICKET-006.3] Experience domain entity builder
+│       │   │   ├── experience_mapper.py      # [TICKET-006.3] Experience parser/mapper
+│       │   │   └── experience_validator.py   # [TICKET-006.3] Experience fields validator
 │       │   └── services/
 │       │       └── document_storage.py
 │       ├── core/
@@ -83,6 +86,7 @@
 │   ├── test_document_intelligence.py         # [TASK-004] 32 pipeline tests
 │   ├── test_document_pipeline.py             # [TICKET-005.6] Document pipeline integration tests
 │   ├── test_education_builder.py             # [TICKET-006.2] Education builder tests
+│   ├── test_experience_builder.py            # [TICKET-006.3] Experience builder tests
 │   ├── test_heading_detection.py             # [TICKET-005.2] Heading detection tests
 │   ├── test_section_detection.py             # [TICKET-005.4] Section detection tests
 │   └── test_storage_service.py

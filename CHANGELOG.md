@@ -1,6 +1,14 @@
 # Changelog
 
+## 1.3.0 - Experience Builder
+
+- Implemented `ExperienceMapper` parsing CIR experience sections into structured records (Company, Role, Location, start/end dates, current position flag, description bullet points, and skills) using deterministic heuristics.
+- Implemented `ExperienceValidator` validating required fields (company name, role title), chronological start/end date consistency, current position logic consistency, empty sections, and duplicate records.
+- Implemented `ExperienceBuilder` orchestrating parsing, validation, and construction of `Experience` domain entities.
+- Added unit tests covering single and multiple experiences parsing, current employment flag detection, missing companies/roles, duplicate record detection, year ordering consistency, and empty experience sections.
+
 ## 1.2.0 - Education Builder
+
 
 - Implemented `EducationMapper` parsing CIR education sections into structured records (Institution, Degree, Major, GPA, dates, and details) using deterministic keyword and syntax rules.
 - Implemented `EducationValidator` validating required fields (institution, degree), chronological start/end date consistency, empty education sections, and duplicate records.
