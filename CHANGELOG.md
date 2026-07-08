@@ -1,6 +1,14 @@
 # Changelog
 
+## 1.2.0 - Education Builder
+
+- Implemented `EducationMapper` parsing CIR education sections into structured records (Institution, Degree, Major, GPA, dates, and details) using deterministic keyword and syntax rules.
+- Implemented `EducationValidator` validating required fields (institution, degree), chronological start/end date consistency, empty education sections, and duplicate records.
+- Implemented `EducationBuilder` orchestrating parsing, verification, and construction of `Education` domain entities.
+- Added unit tests covering single and multiple education records parsing, missing institutions/degrees, duplicate record detection, year ordering consistency, and empty education sections.
+
 ## 1.1.0 - Candidate Builder
+
 
 - Implemented `CandidateMapper` providing heuristics to locate, extract, and normalize candidate profile fields (Name, Email, Phone, Location, and URLs like LinkedIn, GitHub, Portfolio) from CIR components.
 - Implemented `CandidateValidator` defining robust data checks (name length requirements, duplicate email detection, email format syntax, phone number rules, and URL validation).

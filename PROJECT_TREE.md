@@ -27,7 +27,10 @@
 │       │   ├── resume_builder/               # [TASK-006] Resume intelligence builder
 │       │   │   ├── candidate_builder.py      # [TICKET-006.1] Candidate domain entity builder
 │       │   │   ├── candidate_mapper.py       # [TICKET-006.1] Candidate properties extractor/mapper
-│       │   │   └── candidate_validator.py    # [TICKET-006.1] Candidate fields validator
+│       │   │   ├── candidate_validator.py    # [TICKET-006.1] Candidate fields validator
+│       │   │   ├── education_builder.py      # [TICKET-006.2] Education domain entity builder
+│       │   │   ├── education_mapper.py       # [TICKET-006.2] Education parser/mapper
+│       │   │   └── education_validator.py    # [TICKET-006.2] Education fields validator
 │       │   └── services/
 │       │       └── document_storage.py
 │       ├── core/
@@ -79,6 +82,7 @@
 │   ├── test_document_entities.py
 │   ├── test_document_intelligence.py         # [TASK-004] 32 pipeline tests
 │   ├── test_document_pipeline.py             # [TICKET-005.6] Document pipeline integration tests
+│   ├── test_education_builder.py             # [TICKET-006.2] Education builder tests
 │   ├── test_heading_detection.py             # [TICKET-005.2] Heading detection tests
 │   ├── test_section_detection.py             # [TICKET-005.4] Section detection tests
 │   └── test_storage_service.py
