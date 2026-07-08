@@ -1,6 +1,13 @@
 # Changelog
 
+## 0.8.0 - Section Detection Engine
+
+- Implemented `SectionMapper` service providing deterministic heading normalization and string keyword matching to resolve `SectionType` classification and construct `DocumentSection` objects.
+- Implemented `SectionDetectorProtocol` and concrete `SectionDetectorService` class that processes section boundaries and maps them to domain entity lists.
+- Added unit tests for standard sections (Education, Experience, Projects, Skills), unknown fallback matching (mapping to `SectionType.OTHER`), repeated headings, empty boundaries, and section order preservation.
+
 ## 0.7.0 - Section Boundary Detection Engine
+
 
 - Implemented `SectionBoundary` model holding segment coordinates (start/end page/block indices, heading reference, confidence, evidence, and metadata).
 - Implemented `BoundaryRule` base class and concrete boundary scoring rules (`NextHeadingBoundaryRule`, `EndOfDocumentBoundaryRule`, `PageBreakBoundaryRule`, `EmptyLineBoundaryRule`).
