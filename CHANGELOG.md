@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.0 - Complete Resume Intelligence Layer
+
+- Implemented `ProjectBuilder`, `ProjectMapper`, and `ProjectValidator` to parse project blocks, project URLs, and technologies from the CIR.
+- Implemented `SkillBuilder`, `SkillMapper`, and `SkillValidator` to extract, categorize, and deduplicate technical skills and proficiencies.
+- Implemented `CertificationBuilder`, `CertificationMapper`, and `CertificationValidator` to extract certification credentials, issuers, and dates.
+- Implemented `AchievementBuilder`, `AchievementMapper`, and `AchievementValidator` to extract award titles, descriptions, and dates.
+- Implemented `ResumeAssembler` to compile all component entities (Candidate, Education, Experience, Projects, Skills, Certifications, Achievements) into an immutable `Resume` domain object.
+- Implemented `ResumeValidator` enforcing cross-field consistency checks (e.g., project skills match master skills) and duplicate entity checks.
+- Implemented `ResumeIntegration` orchestrating the complete end-to-end Resume pipeline.
+- Added comprehensive unit and integration tests covering all builders, mappers, validators, assembler, and pipeline flows with 100% test coverage.
+
 ## 1.3.0 - Experience Builder
 
 - Implemented `ExperienceMapper` parsing CIR experience sections into structured records (Company, Role, Location, start/end dates, current position flag, description bullet points, and skills) using deterministic heuristics.

@@ -25,15 +25,30 @@
 │       │   │   ├── section_detector_service.py # [TICKET-005.4] Section detector service
 │       │   │   └── section_mapper.py         # [TICKET-005.4] Section heading classification mapper
 │       │   ├── resume_builder/               # [TASK-006] Resume intelligence builder
+│       │   │   ├── achievement_builder.py    # Achievement domain entity builder
+│       │   │   ├── achievement_mapper.py     # Achievement parser/mapper
+│       │   │   ├── achievement_validator.py  # Achievement fields validator
 │       │   │   ├── candidate_builder.py      # [TICKET-006.1] Candidate domain entity builder
 │       │   │   ├── candidate_mapper.py       # [TICKET-006.1] Candidate properties extractor/mapper
 │       │   │   ├── candidate_validator.py    # [TICKET-006.1] Candidate fields validator
+│       │   │   ├── certification_builder.py  # Certification domain entity builder
+│       │   │   ├── certification_mapper.py   # Certification parser/mapper
+│       │   │   ├── certification_validator.py # Certification fields validator
 │       │   │   ├── education_builder.py      # [TICKET-006.2] Education domain entity builder
 │       │   │   ├── education_mapper.py       # [TICKET-006.2] Education parser/mapper
 │       │   │   ├── education_validator.py    # [TICKET-006.2] Education fields validator
 │       │   │   ├── experience_builder.py     # [TICKET-006.3] Experience domain entity builder
 │       │   │   ├── experience_mapper.py      # [TICKET-006.3] Experience parser/mapper
-│       │   │   └── experience_validator.py   # [TICKET-006.3] Experience fields validator
+│       │   │   ├── experience_validator.py   # [TICKET-006.3] Experience fields validator
+│       │   │   ├── project_builder.py        # Project domain entity builder
+│       │   │   ├── project_mapper.py         # Project parser/mapper
+│       │   │   ├── project_validator.py      # Project fields validator
+│       │   │   ├── resume_assembler.py       # Resume domain entity assembler
+│       │   │   ├── resume_integration.py     # End-to-end resume pipeline orchestrator
+│       │   │   ├── resume_validator.py       # Resume validator & consistency check
+│       │   │   ├── skill_builder.py          # Skill domain entity builder
+│       │   │   ├── skill_mapper.py           # Skill parser/mapper
+│       │   │   └── skill_validator.py        # Skill fields validator
 │       │   └── services/
 │       │       └── document_storage.py
 │       ├── core/
@@ -79,16 +94,22 @@
 │       │       └── validator.py
 │       └── main.py
 ├── tests/
+│   ├── test_achievement_builder.py           # Achievement builder tests
 │   ├── test_boundary_detection.py            # [TICKET-005.3] Section boundary detection tests
 │   ├── test_candidate_builder.py             # [TICKET-006.1] Candidate builder tests
+│   ├── test_certification_builder.py         # Certification builder tests
 │   ├── test_cir_builder.py                   # [TICKET-005.5] CIR builder tests
 │   ├── test_document_entities.py
 │   ├── test_document_intelligence.py         # [TASK-004] 32 pipeline tests
 │   ├── test_document_pipeline.py             # [TICKET-005.6] Document pipeline integration tests
+│   ├── test_domain_entities.py               # Domain entity tests
 │   ├── test_education_builder.py             # [TICKET-006.2] Education builder tests
 │   ├── test_experience_builder.py            # [TICKET-006.3] Experience builder tests
 │   ├── test_heading_detection.py             # [TICKET-005.2] Heading detection tests
+│   ├── test_project_builder.py               # Project builder tests
+│   ├── test_resume_integration.py            # End-to-end resume pipeline integration tests
 │   ├── test_section_detection.py             # [TICKET-005.4] Section detection tests
+│   ├── test_skill_builder.py                 # Skill builder tests
 │   └── test_storage_service.py
 ├── storage/
 │   ├── generated/
