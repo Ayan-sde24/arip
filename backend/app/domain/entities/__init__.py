@@ -3,6 +3,9 @@
 from app.domain.entities.agent_result import AgentResult
 from app.domain.entities.analysis_context import AnalysisContext
 from app.domain.entities.candidate import Candidate
+from app.domain.entities.canonical_intermediate_representation import (
+    CanonicalIntermediateRepresentation,
+)
 from app.domain.entities.document import Document, DocumentStatus, DocumentType
 from app.domain.entities.document_content import DocumentContent
 from app.domain.entities.document_section import DocumentSection
@@ -44,4 +47,5 @@ __all__ = [
     "SectionType",
     "DocumentSection",
     "StructuredDocument",
+    "CanonicalIntermediateRepresentation",
 ]

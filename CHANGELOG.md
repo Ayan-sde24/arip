@@ -1,6 +1,15 @@
 # Changelog
 
+## 0.9.0 - Canonical Intermediate Representation (CIR) Builder
+
+- Implemented `CanonicalIntermediateRepresentation` domain entity representing the unified CIR containing source document, content, sections, statistics, and metadata.
+- Implemented `CIRStatistics` application model representing calculated metrics across sections, blocks, pages, character count, word count, and detected languages.
+- Implemented `CIRBuilder` class responsible for validation checks (rejecting null inputs, empty section lists, mismatched document IDs, and duplicate section IDs) and assembling the final immutable CIR object.
+- Integrated and exposed `CanonicalIntermediateRepresentation` at the domain layer init.
+- Added unit tests covering successful CIR build workflows, statistics calculation verification, metadata properties, pipeline version mapping, and invalid inputs validation.
+
 ## 0.8.0 - Section Detection Engine
+
 
 - Implemented `SectionMapper` service providing deterministic heading normalization and string keyword matching to resolve `SectionType` classification and construct `DocumentSection` objects.
 - Implemented `SectionDetectorProtocol` and concrete `SectionDetectorService` class that processes section boundaries and maps them to domain entity lists.

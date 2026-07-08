@@ -12,6 +12,8 @@
 │       │   ├── document_analysis/            # [TICKET-005.2] Heading & section analysis
 │       │   │   ├── boundary_detector.py      # [TICKET-005.3] Boundary detection orchestrator
 │       │   │   ├── boundary_rules.py         # [TICKET-005.3] Boundary heuristics engine
+│       │   │   ├── cir_builder.py            # [TICKET-005.5] CIR builder and validator
+│       │   │   ├── cir_statistics.py         # [TICKET-005.5] CIR statistics application model
 │       │   │   ├── heading_candidate.py      # Heading candidate model
 │       │   │   ├── heading_detector.py       # Heading detection service orchestrator
 │       │   │   ├── heading_rules.py          # Scoring heuristics engine
@@ -31,6 +33,7 @@
 │       │       ├── agent_result.py
 │       │       ├── analysis_context.py
 │       │       ├── candidate.py
+│       │       ├── canonical_intermediate_representation.py # [TICKET-005.5] CIR domain entity
 │       │       ├── document.py
 │       │       ├── document_content.py       # [TASK-004] Unified document representation
 │       │       ├── document_section.py       # [TICKET-005.1] Document section domain entity
@@ -64,6 +67,7 @@
 │       └── main.py
 ├── tests/
 │   ├── test_boundary_detection.py            # [TICKET-005.3] Section boundary detection tests
+│   ├── test_cir_builder.py                   # [TICKET-005.5] CIR builder tests
 │   ├── test_document_entities.py
 │   ├── test_document_intelligence.py         # [TASK-004] 32 pipeline tests
 │   ├── test_heading_detection.py             # [TICKET-005.2] Heading detection tests
