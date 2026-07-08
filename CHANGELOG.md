@@ -1,6 +1,14 @@
 # Changelog
 
+## 0.7.0 - Section Boundary Detection Engine
+
+- Implemented `SectionBoundary` model holding segment coordinates (start/end page/block indices, heading reference, confidence, evidence, and metadata).
+- Implemented `BoundaryRule` base class and concrete boundary scoring rules (`NextHeadingBoundaryRule`, `EndOfDocumentBoundaryRule`, `PageBreakBoundaryRule`, `EmptyLineBoundaryRule`).
+- Implemented `BoundaryDetector` service grouping heading candidates and resolving start/end offsets sequentially across the document pages.
+- Added unit tests for single section documents, multi-section boundaries, repeated headings, trailing sections, page break alignments, and documents without headings.
+
 ## 0.6.0 - Heading Detection Engine
+
 
 - Implemented `HeadingCandidate` model representing heading blocks found in documents.
 - Implemented `HeadingRule` base class and concrete scoring rule engines (`LengthRule`, `CapitalizationRule`, `WhitespaceRule`, `KeywordRule`, `PositionRule`).

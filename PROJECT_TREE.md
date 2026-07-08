@@ -10,9 +10,12 @@
 │       │       └── upload.py
 │       ├── application/
 │       │   ├── document_analysis/            # [TICKET-005.2] Heading & section analysis
+│       │   │   ├── boundary_detector.py      # [TICKET-005.3] Boundary detection orchestrator
+│       │   │   ├── boundary_rules.py         # [TICKET-005.3] Boundary heuristics engine
 │       │   │   ├── heading_candidate.py      # Heading candidate model
 │       │   │   ├── heading_detector.py       # Heading detection service orchestrator
-│       │   │   └── heading_rules.py          # Scoring heuristics engine
+│       │   │   ├── heading_rules.py          # Scoring heuristics engine
+│       │   │   └── section_boundary.py       # [TICKET-005.3] Section boundary model
 │       │   └── services/
 │       │       └── document_storage.py
 │       ├── core/
@@ -57,6 +60,7 @@
 │       │       └── validator.py
 │       └── main.py
 ├── tests/
+│   ├── test_boundary_detection.py            # [TICKET-005.3] Section boundary detection tests
 │   ├── test_document_entities.py
 │   ├── test_document_intelligence.py         # [TASK-004] 32 pipeline tests
 │   ├── test_heading_detection.py             # [TICKET-005.2] Heading detection tests
