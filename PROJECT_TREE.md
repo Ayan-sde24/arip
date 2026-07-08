@@ -24,6 +24,10 @@
 │       │   │   ├── section_detector.py       # [TICKET-005.4] Section detector Protocol
 │       │   │   ├── section_detector_service.py # [TICKET-005.4] Section detector service
 │       │   │   └── section_mapper.py         # [TICKET-005.4] Section heading classification mapper
+│       │   ├── resume_builder/               # [TASK-006] Resume intelligence builder
+│       │   │   ├── candidate_builder.py      # [TICKET-006.1] Candidate domain entity builder
+│       │   │   ├── candidate_mapper.py       # [TICKET-006.1] Candidate properties extractor/mapper
+│       │   │   └── candidate_validator.py    # [TICKET-006.1] Candidate fields validator
 │       │   └── services/
 │       │       └── document_storage.py
 │       ├── core/
@@ -70,6 +74,7 @@
 │       └── main.py
 ├── tests/
 │   ├── test_boundary_detection.py            # [TICKET-005.3] Section boundary detection tests
+│   ├── test_candidate_builder.py             # [TICKET-006.1] Candidate builder tests
 │   ├── test_cir_builder.py                   # [TICKET-005.5] CIR builder tests
 │   ├── test_document_entities.py
 │   ├── test_document_intelligence.py         # [TASK-004] 32 pipeline tests

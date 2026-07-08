@@ -1,6 +1,15 @@
 # Changelog
 
+## 1.1.0 - Candidate Builder
+
+- Implemented `CandidateMapper` providing heuristics to locate, extract, and normalize candidate profile fields (Name, Email, Phone, Location, and URLs like LinkedIn, GitHub, Portfolio) from CIR components.
+- Implemented `CandidateValidator` defining robust data checks (name length requirements, duplicate email detection, email format syntax, phone number rules, and URL validation).
+- Implemented `CandidateBuilder` orchestrating extraction, checking, and instantiation of immutable `Candidate` domain entities.
+- Removed deprecated `datetime.utcnow()` call in favor of timezone-aware UTC in `CanonicalIntermediateRepresentation`.
+- Added unit tests covering candidate instantiation, missing names/emails/phones, duplicate emails, invalid URLs, and invalid phone number formats.
+
 ## 1.0.0 - Document Intelligence Pipeline Integration
+
 
 - Implemented `DocumentPipeline` orchestrating service coordinating layout extraction, heading scoring, section boundary mapping, and CIR construction.
 - Implemented `PipelineResult` dataclass to wrap execution state, warnings, errors, processing durations, and the successfully built CIR object.

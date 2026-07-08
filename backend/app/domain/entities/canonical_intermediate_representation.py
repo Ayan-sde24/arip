@@ -1,7 +1,7 @@
 """Domain entity representing the Canonical Intermediate Representation (CIR)."""
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any
 
 from app.application.document_analysis.cir_statistics import CIRStatistics
@@ -32,5 +32,5 @@ class CanonicalIntermediateRepresentation:
     sections: list[DocumentSection]
     statistics: CIRStatistics
     metadata: dict[str, Any] = field(default_factory=dict)
-    created_at: datetime = field(default_factory=datetime.utcnow)
+    created_at: datetime = field(default_factory=lambda: datetime.now(UTC))
     pipeline_version: str = "1.0"
