@@ -13,3 +13,4 @@ export { ThemeSwitcher } from "./ThemeSwitcher";
 export { SearchBar } from "./SearchBar";
 export { NotificationDropdown } from "./NotificationDropdown";
 export { UserDropdown } from "./UserDropdown";
+export { ProtectedRoute } from "./ProtectedRoute";
