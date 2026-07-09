@@ -12,7 +12,7 @@ import {
   Shield,
   Star,
 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+
 import { Badge } from "../components/ui/Badge";
 import { GlassCard, FeatureCard } from "../components/cards/Cards";
 import { staggerContainer, fadeInUp } from "../animations/variants";
@@ -114,18 +114,20 @@ export function LandingPage() {
 
           {/* CTA buttons */}
           <motion.div variants={fadeInUp} className="flex items-center gap-4 mt-2">
-            <Button variant="gradient" size="lg" asChild>
-              <Link to="/upload" className="flex items-center gap-2">
-                Analyze My Resume
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/report/demo" className="flex items-center gap-2">
-                See Sample Report
-                <ChevronRight className="h-4 w-4" />
-              </Link>
-            </Button>
+            <Link
+              to="/upload"
+              className="inline-flex items-center gap-2 h-12 px-8 py-3 text-base rounded-xl font-medium bg-gradient-to-r from-primary via-indigo-500 to-purple-600 text-white hover:brightness-105 shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 active:scale-[0.98] select-none"
+            >
+              Analyze My Resume
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              to="/report/demo"
+              className="inline-flex items-center gap-2 h-12 px-8 py-3 text-base rounded-xl font-medium border border-border/80 bg-background/50 hover:bg-accent/40 text-foreground transition-all hover:-translate-y-0.5 active:scale-[0.98] select-none"
+            >
+              See Sample Report
+              <ChevronRight className="h-4 w-4" />
+            </Link>
           </motion.div>
 
           {/* Trust signals */}
@@ -264,12 +266,13 @@ export function LandingPage() {
           <p className="text-muted-foreground mb-8">
             Upload your resume and job description. Get your analysis in 30 seconds.
           </p>
-          <Button variant="gradient" size="lg" asChild>
-            <Link to="/upload" className="flex items-center gap-2 mx-auto w-fit">
-              Start Free Analysis
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
+          <Link
+            to="/upload"
+            className="inline-flex items-center gap-2 h-12 px-8 py-3 text-base rounded-xl font-medium bg-gradient-to-r from-primary via-indigo-500 to-purple-600 text-white hover:brightness-105 shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 active:scale-[0.98] select-none mx-auto"
+          >
+            Start Free Analysis
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </motion.div>
       </section>
     </div>

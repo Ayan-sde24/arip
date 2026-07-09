@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Bot, Upload } from "lucide-react";
 import { ThemeToggle } from "../ui/Utilities";
-import { Button } from "../ui/Button";
 
 export function Navbar() {
   const { pathname } = useLocation();
