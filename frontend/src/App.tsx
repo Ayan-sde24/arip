@@ -1,10 +1,16 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppShell } from "./layouts";
 import { LandingPage } from "./pages/LandingPage";
+import { Dashboard } from "./pages/Dashboard";
 import { UploadPage } from "./pages/UploadPage";
-import { AnalysisPage } from "./pages/AnalysisPage";
-import { ReportPage } from "./pages/ReportPage";
+import { AnalysisWorkspace } from "./pages/AnalysisWorkspace";
+import { ResultsPage } from "./pages/ResultsPage";
+import { ResumeOptimizer } from "./pages/ResumeOptimizer";
+import { History } from "./pages/History";
+import { Profile } from "./pages/Profile";
+import { Settings } from "./pages/Settings";
+import { NotFound } from "./pages/NotFound";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,10 +25,15 @@ export default function App() {
         <AppShell>
           <Routes>
             <Route path="/"             element={<LandingPage />} />
+            <Route path="/dashboard"    element={<Dashboard />} />
             <Route path="/upload"       element={<UploadPage />} />
-            <Route path="/analysis/:id" element={<AnalysisPage />} />
-            <Route path="/report/:id"   element={<ReportPage />} />
-            <Route path="*"             element={<Navigate to="/" replace />} />
+            <Route path="/analysis/:id" element={<AnalysisWorkspace />} />
+            <Route path="/report/:id"   element={<ResultsPage />} />
+            <Route path="/coach"        element={<ResumeOptimizer />} />
+            <Route path="/history"      element={<History />} />
+            <Route path="/profile"      element={<Profile />} />
+            <Route path="/settings"     element={<Settings />} />
+            <Route path="*"             element={<NotFound />} />
           </Routes>
         </AppShell>
       </BrowserRouter>

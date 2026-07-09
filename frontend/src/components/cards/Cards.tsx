@@ -5,13 +5,16 @@ import { cn } from "../../lib/utils";
 export function GlassCard({
   children,
   className,
+  onClick,
 }: {
   children: React.ReactNode;
   className?: string;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }) {
   return (
     <motion.div
       whileHover={{ y: -2 }}
+      onClick={onClick}
       className={cn(
         "bg-card/45 backdrop-blur-md border border-border/40 hover:border-primary/20 shadow-glass rounded-xl p-6 transition-all duration-300",
         className
