@@ -10,7 +10,6 @@ import {
   Settings,
   Sparkles,
   ArrowRight,
-  Clock,
   Keyboard,
 } from "lucide-react";
 import { useCommandPaletteStore } from "../../store";

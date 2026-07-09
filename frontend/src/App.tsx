@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { AppShell } from "./layouts/AppShell";
+import { AppShell } from "./layouts";
 import { LandingPage } from "./pages/LandingPage";
 import { UploadPage } from "./pages/UploadPage";
 import { AnalysisPage } from "./pages/AnalysisPage";

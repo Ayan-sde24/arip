@@ -97,7 +97,7 @@ interface NotificationStore {
   clear: () => void;
 }
 
-export const useNotificationStore = create<NotificationStore>()((set, get) => ({
+export const useNotificationStore = create<NotificationStore>()((set) => ({
   notifications: [],
   isOpen: false,
   unreadCount: 0,
@@ -160,7 +160,7 @@ interface AIStatusStore {
   hide: () => void;
 }
 
-export const useAIStatusStore = create<AIStatusStore>()((set, get) => ({
+export const useAIStatusStore = create<AIStatusStore>()((set) => ({
   agents: [],
   isVisible: false,
   globalStatus: "idle",

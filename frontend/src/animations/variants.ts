@@ -6,7 +6,7 @@ export const fadeIn = {
     transition: {
       delay: custom * 0.05,
       duration: 0.4,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   }),
 };
@@ -19,7 +19,7 @@ export const slideIn = {
     transition: {
       delay: custom * 0.05,
       duration: 0.4,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   }),
 };
@@ -31,7 +31,7 @@ export const scaleUp = {
     scale: 1,
     transition: {
       duration: 0.4,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
 };
@@ -53,7 +53,7 @@ export const pageTransition = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
   exit: {
@@ -61,7 +61,7 @@ export const pageTransition = {
     y: -8,
     transition: {
       duration: 0.3,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
 };
